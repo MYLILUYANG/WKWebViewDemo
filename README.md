@@ -4,6 +4,8 @@ WKWebView 基础内容
 3 js调用OC文字输入框。
 4 js发送任意消息OC接收后处理。
 5 OC主动发送消息给js处理。
+简书地址
+https://www.jianshu.com/p/c46ac796e521
 
 
 
