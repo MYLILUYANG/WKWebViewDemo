@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>OC与JS交互</title>
+            <style type="text/css">
+                * {
+                    font-size: 40px;
+                }
+            </style>
+    </head>
+    <script>
+        function jsSendAlertToOC () {
+            alert('js调用原生警告面板');
+        }
+    function jsSendConfirmToOC() {
+        if(confirm('js 调用原生确认面板')){
+            document.getElementById('showMessage').innerHTML
+            = 'true';
+        } else {
+            document.getElementById('showMessage').innerHTML
+            = 'false';
+        }
+    }
+    function jsSendInputToOC(){
+        var response = prompt('请输入您的测试数据');
+        document.getElementById('showMessage').innerHTML = response;
+    }
+    function jsSendMessageToOC(){
+<!--通过 [config.userContentController addScriptMessageHandler:self name:@"messageSend"]; 注入"messageSend"来发出消息-->
+        window.webkit.messageHandlers.messageSend.postMessage({a:10, b:'c'})
+        
+    }
+    </script>
+    <body>
+        <div>
+            <button onclick="jsSendAlertToOC()">js调用原生警告面板</button>
+            <br>
+            <br>
+            <button onclick="jsSendConfirmToOC()">js调用原生确认</button>
+            <br>
+            <br>
+            <button onclick="jsSendInputToOC()">js调用输入框</button>
+            <br>
+            <br>
+            <button onclick="jsSendMessageToOC()">js发送数据给原生</button>
+            <br>
+            <br>
+            <div id="showMessage"></div>
+            
+        </div>
+    </body>
+</html>
